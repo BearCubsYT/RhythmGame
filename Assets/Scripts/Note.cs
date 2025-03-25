@@ -12,7 +12,6 @@ public class Note : MonoBehaviour
     private float centerOfBoard = 5.00f;
     [SerializeField] private GameObject UI;
     [SerializeField] private GameObject note;
-    [SerializeField] private GameObject top;
     [SerializeField] private GameObject song;
 
     private int perfectPlusScore = 1000;

@@ -23,8 +23,6 @@ public class HoldNote : MonoBehaviour
 
     [SerializeField] private GameObject UI;
     [SerializeField] private GameObject holdNote;
-    [SerializeField] private GameObject holdNoteTop;
-    [SerializeField] private GameObject holdNoteBase;
 
     private int perfectPlusScore = 1000;
     private int perfectScore = 800;
