@@ -127,8 +127,7 @@ public class NoteSpawner : MonoBehaviour
                     currentNote.name = $"Blue Note ({blueNoteCount})";
                     currentNote.transform.parent = blueNotes.transform;
                     currentNote.tag = "HoldNote";
-                    currentNote.GetComponent<BoxCollider>().size = new Vector3(len * 2, 1, 1);
-                    transform.localScale = new Vector3(len, 1, 1);
+                    currentNote.transform.localScale = new Vector3(len, 1, 1);
                     gameManager.GetComponent<Stats>().blueNotes.Add(currentNote.name);
                 }
                 if (note.key == "Up")
@@ -139,8 +138,7 @@ public class NoteSpawner : MonoBehaviour
                     currentNote.name = $"Yellow Note ({yellowNoteCount})";
                     currentNote.transform.parent = yellowNotes.transform;
                     currentNote.tag = "HoldNote";
-                    currentNote.GetComponent<BoxCollider>().size = new Vector3(len * 2, 1, 1);
-                    transform.localScale = new Vector3(len, 1, 1);
+                    currentNote.transform.localScale = new Vector3(len, 1, 1);
                     gameManager.GetComponent<Stats>().yellowNotes.Add(currentNote.name);
                 }
                 if (note.key == "Down")
@@ -151,8 +149,7 @@ public class NoteSpawner : MonoBehaviour
                     currentNote.name = $"Green Note ({greenNoteCount})";
                     currentNote.transform.parent = greenNotes.transform;
                     currentNote.tag = "HoldNote";
-                    currentNote.GetComponent<BoxCollider>().size = new Vector3(len * 2, 1, 1);
-                    transform.localScale = new Vector3(len, 1, 1);
+                    currentNote.transform.localScale = new Vector3(len, 1, 1);
                     gameManager.GetComponent<Stats>().greenNotes.Add(currentNote.name);
                 }
                 if (note.key == "Up")
@@ -163,8 +160,7 @@ public class NoteSpawner : MonoBehaviour
                     currentNote.name = $"Red Note ({redNoteCount})";
                     currentNote.transform.parent = redNotes.transform;
                     currentNote.tag = "HoldNote";
-                    currentNote.GetComponent<BoxCollider>().size = new Vector3(len * 2, 1, 1);
-                    transform.localScale = new Vector3(len, 1, 1);
+                    currentNote.transform.localScale = new Vector3(len, 1, 1);
                     gameManager.GetComponent<Stats>().redNotes.Add(currentNote.name);
                 }
             }
