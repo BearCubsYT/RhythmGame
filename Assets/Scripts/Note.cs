@@ -50,7 +50,7 @@ public class Note : MonoBehaviour
             canBePressed = false;
             if (!wasPressed)
             {
-                Debug.Log("Miss");
+                //Debug.Log("Miss");
                 UI.GetComponent<UI>().streak = 0;
                 UI.GetComponent<UI>().multiplier = 0;
                 gameManager.GetComponent<Stats>().missedHits += 1;
@@ -125,28 +125,28 @@ public class Note : MonoBehaviour
 
             if (distance <= 0.25)
             {
-                Debug.Log("Perfect+");
+                //Debug.Log("Perfect+");
                 UI.GetComponent<UI>().score += perfectPlusScore * UI.GetComponent<UI>().multiplier;
                 UI.GetComponent<UI>().streak += 1;
                 gameManager.GetComponent<Stats>().perfectPlusHits += 1;
             }
             else if (distance > 0.25 && distance <= 0.5)
             {
-                Debug.Log("Perfect");
+                //Debug.Log("Perfect");
                 UI.GetComponent<UI>().score += perfectScore * UI.GetComponent<UI>().multiplier;
                 UI.GetComponent<UI>().streak += 1;
                 gameManager.GetComponent<Stats>().perfectHits += 1;
             }
             else if (distance > 0.5 && distance <= 0.75)
             {
-                Debug.Log("Great");
+                //Debug.Log("Great");
                 UI.GetComponent<UI>().score += greatScore * UI.GetComponent<UI>().multiplier;
                 UI.GetComponent<UI>().streak += 1;
                 gameManager.GetComponent<Stats>().greatHits += 1;
             }
             else if (distance > 0.75)
             {
-                Debug.Log("Good");
+                //Debug.Log("Good");
                 UI.GetComponent<UI>().score += goodScore * UI.GetComponent<UI>().multiplier;
                 UI.GetComponent<UI>().streak += 1;
                 gameManager.GetComponent<Stats>().goodHits += 1;
