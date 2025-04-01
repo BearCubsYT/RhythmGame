@@ -10,7 +10,8 @@ public class UpdateLevelSelect : MonoBehaviour
     [SerializeField] private GameObject StatsPrefab;
     [SerializeField] private GameObject ButtonPrefab;
     [SerializeField] private TextMeshProUGUI NoteCountText;
-    [SerializeField] private TextMeshProUGUI SongNameText;
+    [SerializeField] private TextMeshProUGUI SongnameText;
+    [SerializeField] private CanvasRenderer Contant;
     [SerializeField] public TextAsset[] jsonFiles;
 
     [System.Serializable]
@@ -32,26 +33,46 @@ public class UpdateLevelSelect : MonoBehaviour
 
     private void GenerateLevelButtons()
     {
-        float count = 0f;
-
-        //if (count / 2)
-        //{
-            
-        //}
+        int count = 0;
+        int row = 0;
+        int col = 0;
 
         foreach (TextAsset Map in jsonFiles)
         {
-            MapJson MapString = JsonUtility.FromJson<MapJson>(Map.ToString());
-            //GameObject SongButton = Instantiate(ButtonPrefab, new Vector3(-420 + ((count % 2) * 750), 1480 - (Math.Floor(count / 2.0f) * 200), 0), Quaternion.identity);
+            MapJson MapObject = JsonUtility.FromJson<MapJson>(Map.ToString());
+            GameObject SongButton = Instantiate(ButtonPrefab, new Vector3(-420 + (col * 800), 1480 - (row * 300), 0), Quaternion.identity);
+            
+            TextMeshProUGUI ButtonSong = SongButton.GetComponentInChildren<TextMeshProUGUI>();
+            ButtonSong.text = MapObject.name;
+
+            SongButton.transform.SetParent(Contant.transform, false);
+            SongButton.SetActive(true);
+            
             count++;
+            
+            if (count % 2 == 0)
+            {
+                row++;
+            }
+
+            if (col == 0)
+            {
+                col = 1;
+            }
+            else
+            {
+                col = 0;
+            }
         }
 
     }
 
-    public void DisplayStats()
+    public void DisplayStats(string x)
     {
+
+
         NoteCountText.text = "Note Count: " + "placeholder";
-        SongNameText.text = "Music: " + "placeholder";
+        SongnameText.text = "Music: " + "placeholder";
         StatsPrefab.SetActive(true);
     }
 

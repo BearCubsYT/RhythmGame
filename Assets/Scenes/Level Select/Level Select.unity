@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: 101801280}
   - component: {fileID: 101801279}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: SongName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -971,9 +971,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1882055229}
-        m_TargetAssemblyTypeName: SongStats, Assembly-CSharp
+        m_TargetAssemblyTypeName: UpdateLevelSelect, Assembly-CSharp
         m_MethodName: DisplayStats
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2146,9 +2146,14 @@ MonoBehaviour:
   StatsPrefab: {fileID: 203277305}
   ButtonPrefab: {fileID: 756528737}
   NoteCountText: {fileID: 621725596}
-  SongNameText: {fileID: 1901710693}
+  SongnameText: {fileID: 0}
+  Contant: {fileID: 647556795}
   jsonFiles:
   - {fileID: 4900000, guid: 5e6a557e6098f424a8058769dece0a2a, type: 3}
+  - {fileID: 4900000, guid: 831a927f1a4827641bb3e2f7dcc49a5c, type: 3}
+  - {fileID: 4900000, guid: 831a927f1a4827641bb3e2f7dcc49a5c, type: 3}
+  - {fileID: 4900000, guid: 5e6a557e6098f424a8058769dece0a2a, type: 3}
+  - {fileID: 4900000, guid: 831a927f1a4827641bb3e2f7dcc49a5c, type: 3}
 --- !u!1 &1901710691
 GameObject:
   m_ObjectHideFlags: 0
