@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class NoteSpawner : MonoBehaviour
@@ -15,7 +17,6 @@ public class NoteSpawner : MonoBehaviour
     private int yellowNoteCount;
     private int greenNoteCount;
     private int redNoteCount;
-    private float len;
 
     // Game Manager
     [SerializeField] private GameObject gameManager;
@@ -91,7 +92,6 @@ public class NoteSpawner : MonoBehaviour
                 }
                 if (note.note == "1")
                 {
-                    Debug.Log("Yellow Note Spawned");
                     yellowNoteCount++;
                     currentNote = Instantiate(yellowPrefab, new Vector3(float.Parse(note.position) * gameManager.GetComponent<BeatScroller>().noteSpeed, 0.8f, 1.125f), Quaternion.identity);
                     currentNote.name = $"Yellow Note ({yellowNoteCount})";
@@ -120,21 +120,49 @@ public class NoteSpawner : MonoBehaviour
             }
             else
             {
-                // Gonna Rewrite During Lunch, During Related, and While I am at Home (Leave this to me Ruchir, lmao)
+                // (Archived) Gonna Rewrite During Lunch, During Related, and While I am at Home (Leave this to me Ruchir, lmao)
+                if (note.note == "0")
+                {
+                    HoldNoteSpawner(blueNoteCount, blueHoldPrefab, note, "Blue Note", blueNotes.transform, gameManager.GetComponent<Stats>().blueNotes);
+                    Debug.Log("Yellow Note Spawned");
+                }
+                if (note.note == "1")
+                {
+                    HoldNoteSpawner(yellowNoteCount, yellowHoldPrefab, note, "Yellow Note", yellowNotes.transform, gameManager.GetComponent<Stats>().yellowNotes);
+                }
+                if (note.note == "2")
+                {
+                    HoldNoteSpawner(greenNoteCount, greenHoldPrefab, note, "Green Note", greenNotes.transform, gameManager.GetComponent<Stats>().greenNotes);
+                }
+                if (note.note == "3")
+                {
+                    HoldNoteSpawner(redNoteCount, redHoldPrefab, note, "Red Note", redNotes.transform, gameManager.GetComponent<Stats>().redNotes);
+                }
             }
             times++;
-            //if (times == notes.notes.Length)
-            //{
-            //    if (currentNote.CompareTag("Note"))
-            //    {
-            //        currentNote.tag = "Last Note";
-            //    }
-            //    else
-            //    {
-            //        currentNote.tag = "Last HoldNote";
-            //    }
-            //}
+            if (times == notes.notes.Length)
+            {
+                if (currentNote.CompareTag("Note"))
+                {
+                    currentNote.tag = "Last Note";
+                }
+                else
+                {
+                    currentNote.tag = "Last HoldNote";
+                }
+            }
         }
+    }
+
+    void HoldNoteSpawner(int noteCount, GameObject prefab, Note note, string noteName, Transform noteTransform, List<string> noteArray)
+    {
+        noteCount++;
+        currentNote = Instantiate(prefab, new Vector3((float.Parse(note.position + note.length) - (float.Parse(note.length) / 2)) * gameManager.GetComponent<BeatScroller>().noteSpeed, 0.8f, 3.5f), Quaternion.identity);
+        currentNote.name = $"{noteName} ({noteCount})";
+        currentNote.transform.parent = noteTransform;
+        currentNote.tag = "HoldNote";
+        currentNote.transform.localScale = new Vector3(float.Parse(note.length), 1, 1);
+        noteArray.Add(currentNote.name);
     }
 
     void Start()
