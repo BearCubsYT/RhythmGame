@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class NoteSpawner : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class NoteSpawner : MonoBehaviour
 
     // Game Manager
     [SerializeField] private GameObject gameManager;
+    private float noteSpeed;
 
     // Note Prefabs
     [SerializeField] private GameObject bluePrefab;
@@ -58,12 +60,20 @@ public class NoteSpawner : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        AssignCurrentFile();
+        gameManager.GetComponent<BeatScroller>().noteSpeed = 25;
+        noteSpeed = 5;
+        SpawnNotes();
+    }
+
     void AssignCurrentFile()
     {
         currentJsonFile = jsonFiles[0];
         //var times = 0;
         //foreach (var song in songs)
-        //{
+        //{//{
         //    if (song.name == currentJsonFile.name)
         //    {
         //        audioSource.clip = songs[times];
@@ -83,60 +93,38 @@ public class NoteSpawner : MonoBehaviour
             {
                 if (note.note == "0")
                 {
-                    blueNoteCount++;
-                    currentNote = Instantiate(bluePrefab, new Vector3(float.Parse(note.position) * gameManager.GetComponent<BeatScroller>().noteSpeed, 0.8f, 3.5f), Quaternion.identity);
-                    currentNote.name = $"Blue Note ({blueNoteCount})";
-                    currentNote.transform.parent = blueNotes.transform;
-                    currentNote.tag = "Note";
-                    gameManager.GetComponent<Stats>().blueNotes.Add(currentNote.name);
+                    TapNoteSpawner(blueNoteCount, bluePrefab, note, "Blue Note", blueNotes.transform, gameManager.GetComponent <Stats>().blueNotes, 3.5f);
                 }
                 if (note.note == "1")
                 {
-                    yellowNoteCount++;
-                    currentNote = Instantiate(yellowPrefab, new Vector3(float.Parse(note.position) * gameManager.GetComponent<BeatScroller>().noteSpeed, 0.8f, 1.125f), Quaternion.identity);
-                    currentNote.name = $"Yellow Note ({yellowNoteCount})";
-                    currentNote.transform.parent = yellowNotes.transform;
-                    currentNote.tag = "Note";
-                    gameManager.GetComponent<Stats>().yellowNotes.Add(currentNote.name);
+                    TapNoteSpawner(yellowNoteCount, yellowPrefab, note, "Yellow Note", yellowNotes.transform, gameManager.GetComponent<Stats>().yellowNotes, 1.125f);
                 }
                 if (note.note == "2")
                 {
-                    greenNoteCount++;
-                    currentNote = Instantiate(greenPrefab, new Vector3(float.Parse(note.position) * gameManager.GetComponent<BeatScroller>().noteSpeed, 0.8f, -1.125f), Quaternion.identity);
-                    currentNote.name = $"Green Note ({greenNoteCount})";
-                    currentNote.transform.parent = greenNotes.transform;
-                    currentNote.tag = "Note";
-                    gameManager.GetComponent<Stats>().greenNotes.Add(currentNote.name);
+                    TapNoteSpawner(greenNoteCount, greenPrefab, note, "Green Note", greenNotes.transform, gameManager.GetComponent<Stats>().greenNotes, -1.125f);
                 }
                 if (note.note == "3")
                 {
-                    redNoteCount++;
-                    currentNote = Instantiate(redPrefab, new Vector3(float.Parse(note.position) * gameManager.GetComponent<BeatScroller>().noteSpeed, 0.8f, -3.5f), Quaternion.identity);
-                    currentNote.name = $"Red Note ({redNoteCount})";
-                    currentNote.transform.parent = redNotes.transform;
-                    currentNote.tag = "Note";
-                    gameManager.GetComponent<Stats>().redNotes.Add(currentNote.name);
+                    TapNoteSpawner(redNoteCount, redPrefab, note, "Blue Note", redNotes.transform, gameManager.GetComponent<Stats>().redNotes, -3.5f);
                 }
             }
             else
             {
-                // (Archived) Gonna Rewrite During Lunch, During Related, and While I am at Home (Leave this to me Ruchir, lmao)
                 if (note.note == "0")
                 {
-                    HoldNoteSpawner(blueNoteCount, blueHoldPrefab, note, "Blue Note", blueNotes.transform, gameManager.GetComponent<Stats>().blueNotes);
-                    Debug.Log("Yellow Note Spawned");
+                    HoldNoteSpawner(blueNoteCount, blueHoldPrefab, note, "Blue Note", blueNotes.transform, gameManager.GetComponent<Stats>().blueNotes, 3.5f);
                 }
                 if (note.note == "1")
                 {
-                    HoldNoteSpawner(yellowNoteCount, yellowHoldPrefab, note, "Yellow Note", yellowNotes.transform, gameManager.GetComponent<Stats>().yellowNotes);
+                    HoldNoteSpawner(yellowNoteCount, yellowHoldPrefab, note, "Yellow Note", yellowNotes.transform, gameManager.GetComponent<Stats>().yellowNotes, 1.125f);
                 }
                 if (note.note == "2")
                 {
-                    HoldNoteSpawner(greenNoteCount, greenHoldPrefab, note, "Green Note", greenNotes.transform, gameManager.GetComponent<Stats>().greenNotes);
+                    HoldNoteSpawner(greenNoteCount, greenHoldPrefab, note, "Green Note", greenNotes.transform, gameManager.GetComponent<Stats>().greenNotes, -1.125f);
                 }
                 if (note.note == "3")
                 {
-                    HoldNoteSpawner(redNoteCount, redHoldPrefab, note, "Red Note", redNotes.transform, gameManager.GetComponent<Stats>().redNotes);
+                    HoldNoteSpawner(redNoteCount, redHoldPrefab, note, "Red Note", redNotes.transform, gameManager.GetComponent<Stats>().redNotes, -3.5f);
                 }
             }
             times++;
@@ -154,21 +142,25 @@ public class NoteSpawner : MonoBehaviour
         }
     }
 
-    void HoldNoteSpawner(int noteCount, GameObject prefab, Note note, string noteName, Transform noteTransform, List<string> noteArray)
+    void TapNoteSpawner(int noteCount, GameObject prefab, Note note, string noteName, Transform noteTransform, List<string> noteArray, float zPos)
     {
         noteCount++;
-        currentNote = Instantiate(prefab, new Vector3((float.Parse(note.position + note.length) - (float.Parse(note.length) / 2)) * gameManager.GetComponent<BeatScroller>().noteSpeed, 0.8f, 3.5f), Quaternion.identity);
+        currentNote = Instantiate(prefab, new Vector3(float.Parse(note.position) * noteSpeed + 5, 0.8f, zPos), Quaternion.identity);
+        currentNote.name = $"{noteName} ({noteCount})";
+        currentNote.transform.parent = noteTransform;
+        currentNote.tag = "Note";
+        noteArray.Add(currentNote.name);
+    }
+
+    void HoldNoteSpawner(int noteCount, GameObject prefab, Note note, string noteName, Transform noteTransform, List<string> noteArray, float zPos)
+    {
+        noteCount++;
+        currentNote = Instantiate(prefab, new Vector3((float.Parse(note.position + note.length) - (float.Parse(note.length) / 2)) * gameManager.GetComponent<BeatScroller>().noteSpeed, 0.8f, zPos), Quaternion.identity);
         currentNote.name = $"{noteName} ({noteCount})";
         currentNote.transform.parent = noteTransform;
         currentNote.tag = "HoldNote";
         currentNote.transform.localScale = new Vector3(float.Parse(note.length), 1, 1);
         noteArray.Add(currentNote.name);
-    }
-
-    void Start()
-    {
-        AssignCurrentFile();
-        SpawnNotes();
     }
 }
 
