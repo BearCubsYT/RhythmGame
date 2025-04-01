@@ -10,7 +10,7 @@ public class UpdateLevelSelect : MonoBehaviour
     [SerializeField] private GameObject StatsPrefab;
     [SerializeField] private GameObject ButtonPrefab;
     [SerializeField] private TextMeshProUGUI NoteCountText;
-    [SerializeField] private TextMeshProUGUI SongnameText;
+    [SerializeField] private TextMeshProUGUI SongNameText;
     [SerializeField] private CanvasRenderer Contant;
     [SerializeField] public TextAsset[] jsonFiles;
 
@@ -42,6 +42,7 @@ public class UpdateLevelSelect : MonoBehaviour
             MapJson MapObject = JsonUtility.FromJson<MapJson>(Map.ToString());
             GameObject SongButton = Instantiate(ButtonPrefab, new Vector3(-420 + (col * 800), 1480 - (row * 300), 0), Quaternion.identity);
             
+
             TextMeshProUGUI ButtonSong = SongButton.GetComponentInChildren<TextMeshProUGUI>();
             ButtonSong.text = MapObject.name;
 
@@ -67,12 +68,12 @@ public class UpdateLevelSelect : MonoBehaviour
 
     }
 
-    public void DisplayStats(string x)
+    public void DisplayStats()
     {
-
+        Debug.Log(this);
 
         NoteCountText.text = "Note Count: " + "placeholder";
-        SongnameText.text = "Music: " + "placeholder";
+        SongNameText.text = "Music: " + "placeholder";
         StatsPrefab.SetActive(true);
     }
 
