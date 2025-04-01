@@ -46,14 +46,14 @@ public class NoteSpawner : MonoBehaviour
     private class Note
     {
         public string note;
-        public string pos;
-        public string len;
+        public string position;
+        public string length;
 
-        public Note(string key, string pos, string len)
+        public Note(string note, string position, string length)
         {
-            this.note = key;
-            this.pos = pos;
-            this.len = len;
+            this.note = note;
+            this.position = position;
+            this.length = length;
         }
     }
 
@@ -78,40 +78,40 @@ public class NoteSpawner : MonoBehaviour
         var times = 0;
         foreach (Note note in notes.notes)
         {
-            if (note.len == "1")
+            if (note.length == "1")
             {
-                if (note.note == "left")
+                if (note.note == "0")
                 {
                     blueNoteCount++;
-                    currentNote = Instantiate(bluePrefab, new Vector3(float.Parse(note.pos) * gameManager.GetComponent<BeatScroller>().noteSpeed, 0.8f, 3.5f), Quaternion.identity);
+                    currentNote = Instantiate(bluePrefab, new Vector3(float.Parse(note.position) * gameManager.GetComponent<BeatScroller>().noteSpeed, 0.8f, 3.5f), Quaternion.identity);
                     currentNote.name = $"Blue Note ({blueNoteCount})";
                     currentNote.transform.parent = blueNotes.transform;
                     currentNote.tag = "Note";
                     gameManager.GetComponent<Stats>().blueNotes.Add(currentNote.name);
                 }
-                if (note.note == "up")
+                if (note.note == "1")
                 {
                     Debug.Log("Yellow Note Spawned");
                     yellowNoteCount++;
-                    currentNote = Instantiate(yellowPrefab, new Vector3(float.Parse(note.pos) * gameManager.GetComponent<BeatScroller>().noteSpeed, 0.8f, 1.125f), Quaternion.identity);
+                    currentNote = Instantiate(yellowPrefab, new Vector3(float.Parse(note.position) * gameManager.GetComponent<BeatScroller>().noteSpeed, 0.8f, 1.125f), Quaternion.identity);
                     currentNote.name = $"Yellow Note ({yellowNoteCount})";
                     currentNote.transform.parent = yellowNotes.transform;
                     currentNote.tag = "Note";
                     gameManager.GetComponent<Stats>().yellowNotes.Add(currentNote.name);
                 }
-                if (note.note == "down")
+                if (note.note == "2")
                 {
                     greenNoteCount++;
-                    currentNote = Instantiate(greenPrefab, new Vector3(float.Parse(note.pos) * gameManager.GetComponent<BeatScroller>().noteSpeed, 0.8f, -1.125f), Quaternion.identity);
+                    currentNote = Instantiate(greenPrefab, new Vector3(float.Parse(note.position) * gameManager.GetComponent<BeatScroller>().noteSpeed, 0.8f, -1.125f), Quaternion.identity);
                     currentNote.name = $"Green Note ({greenNoteCount})";
                     currentNote.transform.parent = greenNotes.transform;
                     currentNote.tag = "Note";
                     gameManager.GetComponent<Stats>().greenNotes.Add(currentNote.name);
                 }
-                if (note.note == "right")
+                if (note.note == "3")
                 {
                     redNoteCount++;
-                    currentNote = Instantiate(redPrefab, new Vector3(float.Parse(note.pos) * gameManager.GetComponent<BeatScroller>().noteSpeed, 0.8f, -3.5f), Quaternion.identity);
+                    currentNote = Instantiate(redPrefab, new Vector3(float.Parse(note.position) * gameManager.GetComponent<BeatScroller>().noteSpeed, 0.8f, -3.5f), Quaternion.identity);
                     currentNote.name = $"Red Note ({redNoteCount})";
                     currentNote.transform.parent = redNotes.transform;
                     currentNote.tag = "Note";
