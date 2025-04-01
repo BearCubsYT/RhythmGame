@@ -1,6 +1,7 @@
 using System;
 using System.Runtime.CompilerServices;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -31,13 +32,20 @@ public class UpdateLevelSelect : MonoBehaviour
 
     private void GenerateLevelButtons()
     {
-        ButtonPrefab.SetActive(true);
+        float count = 0f;
+
+        //if (count / 2)
+        //{
+            
+        //}
 
         foreach (TextAsset Map in jsonFiles)
         {
             MapJson MapString = JsonUtility.FromJson<MapJson>(Map.ToString());
-            Debug.Log(MapString.name);
+            //GameObject SongButton = Instantiate(ButtonPrefab, new Vector3(-420 + ((count % 2) * 750), 1480 - (Math.Floor(count / 2.0f) * 200), 0), Quaternion.identity);
+            count++;
         }
+
     }
 
     public void DisplayStats()
