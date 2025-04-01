@@ -1,0 +1,10 @@
+{
+  "name": "Sample",
+  "artist": "Smash Mouth",
+  "seconds": 200,
+  "units": 1465,
+  "notes": [
+    { "note": "up", "pos": 1, "len": 1 },
+    { "note": "down", "pos": 4, "len": 5 }
+  ]
+}
