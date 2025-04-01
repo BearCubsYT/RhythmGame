@@ -45,31 +45,31 @@ public class NoteSpawner : MonoBehaviour
     [System.Serializable]
     private class Note
     {
-        public string key;
-        public string time_down;
-        public string time_up;
+        public string note;
+        public string pos;
+        public string len;
 
-        public Note(string key, string time_down, string time_up)
+        public Note(string key, string pos, string len)
         {
-            this.key = key;
-            this.time_down = time_down;
-            this.time_up = time_up;
+            this.note = key;
+            this.pos = pos;
+            this.len = len;
         }
     }
 
     void AssignCurrentFile()
     {
         currentJsonFile = jsonFiles[0];
-        var times = 0;
-        foreach (var song in songs)
-        {
-            if (song.name == currentJsonFile.name)
-            {
-                audioSource.clip = songs[times];
-                break;
-            }
-            times++;
-        }
+        //var times = 0;
+        //foreach (var song in songs)
+        //{
+        //    if (song.name == currentJsonFile.name)
+        //    {
+        //        audioSource.clip = songs[times];
+        //        break;
+        //    }
+        //    times++;
+        //}
     }
 
     void SpawnNotes()
@@ -78,39 +78,40 @@ public class NoteSpawner : MonoBehaviour
         var times = 0;
         foreach (Note note in notes.notes)
         {
-            if (note.time_up == "")
+            if (note.len == "1")
             {
-                if (note.key == "Left")
+                if (note.note == "left")
                 {
                     blueNoteCount++;
-                    currentNote = Instantiate(bluePrefab, new Vector3(float.Parse(note.time_down) * gameManager.GetComponent<BeatScroller>().noteSpeed, 0.8f, 3.5f), Quaternion.identity);
+                    currentNote = Instantiate(bluePrefab, new Vector3(float.Parse(note.pos) * gameManager.GetComponent<BeatScroller>().noteSpeed, 0.8f, 3.5f), Quaternion.identity);
                     currentNote.name = $"Blue Note ({blueNoteCount})";
                     currentNote.transform.parent = blueNotes.transform;
                     currentNote.tag = "Note";
                     gameManager.GetComponent<Stats>().blueNotes.Add(currentNote.name);
                 }
-                if (note.key == "Up")
+                if (note.note == "up")
                 {
+                    Debug.Log("Yellow Note Spawned");
                     yellowNoteCount++;
-                    currentNote = Instantiate(yellowPrefab, new Vector3(float.Parse(note.time_down) * gameManager.GetComponent<BeatScroller>().noteSpeed, 0.8f, 1.125f), Quaternion.identity);
+                    currentNote = Instantiate(yellowPrefab, new Vector3(float.Parse(note.pos) * gameManager.GetComponent<BeatScroller>().noteSpeed, 0.8f, 1.125f), Quaternion.identity);
                     currentNote.name = $"Yellow Note ({yellowNoteCount})";
                     currentNote.transform.parent = yellowNotes.transform;
                     currentNote.tag = "Note";
                     gameManager.GetComponent<Stats>().yellowNotes.Add(currentNote.name);
                 }
-                if (note.key == "Down")
+                if (note.note == "down")
                 {
                     greenNoteCount++;
-                    currentNote = Instantiate(greenPrefab, new Vector3(float.Parse(note.time_down) * gameManager.GetComponent<BeatScroller>().noteSpeed, 0.8f, -1.125f), Quaternion.identity);
+                    currentNote = Instantiate(greenPrefab, new Vector3(float.Parse(note.pos) * gameManager.GetComponent<BeatScroller>().noteSpeed, 0.8f, -1.125f), Quaternion.identity);
                     currentNote.name = $"Green Note ({greenNoteCount})";
                     currentNote.transform.parent = greenNotes.transform;
                     currentNote.tag = "Note";
                     gameManager.GetComponent<Stats>().greenNotes.Add(currentNote.name);
                 }
-                if (note.key == "Right")
+                if (note.note == "right")
                 {
                     redNoteCount++;
-                    currentNote = Instantiate(redPrefab, new Vector3(float.Parse(note.time_down) * gameManager.GetComponent<BeatScroller>().noteSpeed, 0.8f, -3.5f), Quaternion.identity);
+                    currentNote = Instantiate(redPrefab, new Vector3(float.Parse(note.pos) * gameManager.GetComponent<BeatScroller>().noteSpeed, 0.8f, -3.5f), Quaternion.identity);
                     currentNote.name = $"Red Note ({redNoteCount})";
                     currentNote.transform.parent = redNotes.transform;
                     currentNote.tag = "Note";
@@ -119,63 +120,20 @@ public class NoteSpawner : MonoBehaviour
             }
             else
             {
-                if (note.key == "Left")
-                {
-                    blueNoteCount++;
-                    len = float.Parse(note.time_up) - float.Parse(note.time_down);
-                    currentNote = Instantiate(blueHoldPrefab, new Vector3((float.Parse(note.time_up) - (len / 2)) * gameManager.GetComponent<BeatScroller>().noteSpeed, 0.8f, 3.5f), Quaternion.identity);
-                    currentNote.name = $"Blue Note ({blueNoteCount})";
-                    currentNote.transform.parent = blueNotes.transform;
-                    currentNote.tag = "HoldNote";
-                    currentNote.transform.localScale = new Vector3(len, 1, 1);
-                    gameManager.GetComponent<Stats>().blueNotes.Add(currentNote.name);
-                }
-                if (note.key == "Up")
-                {
-                    yellowNoteCount++;
-                    len = float.Parse(note.time_up) - float.Parse(note.time_down);
-                    currentNote = Instantiate(yellowHoldPrefab, new Vector3((float.Parse(note.time_up) - (len / 2)) * gameManager.GetComponent<BeatScroller>().noteSpeed, 0.8f, 1.125f), Quaternion.identity);
-                    currentNote.name = $"Yellow Note ({yellowNoteCount})";
-                    currentNote.transform.parent = yellowNotes.transform;
-                    currentNote.tag = "HoldNote";
-                    currentNote.transform.localScale = new Vector3(len, 1, 1);
-                    gameManager.GetComponent<Stats>().yellowNotes.Add(currentNote.name);
-                }
-                if (note.key == "Down")
-                {
-                    greenNoteCount++;
-                    len = float.Parse(note.time_up) - float.Parse(note.time_down);
-                    currentNote = Instantiate(greenHoldPrefab, new Vector3((float.Parse(note.time_up) - (len / 2)) * gameManager.GetComponent<BeatScroller>().noteSpeed, 0.8f, -1.125f), Quaternion.identity);
-                    currentNote.name = $"Green Note ({greenNoteCount})";
-                    currentNote.transform.parent = greenNotes.transform;
-                    currentNote.tag = "HoldNote";
-                    currentNote.transform.localScale = new Vector3(len, 1, 1);
-                    gameManager.GetComponent<Stats>().greenNotes.Add(currentNote.name);
-                }
-                if (note.key == "Up")
-                {
-                    redNoteCount++;
-                    len = float.Parse(note.time_up) - float.Parse(note.time_down);
-                    currentNote = Instantiate(redHoldPrefab, new Vector3((float.Parse(note.time_up) - (len / 2)) * gameManager.GetComponent<BeatScroller>().noteSpeed, 0.8f, -3.5f), Quaternion.identity);
-                    currentNote.name = $"Red Note ({redNoteCount})";
-                    currentNote.transform.parent = redNotes.transform;
-                    currentNote.tag = "HoldNote";
-                    currentNote.transform.localScale = new Vector3(len, 1, 1);
-                    gameManager.GetComponent<Stats>().redNotes.Add(currentNote.name);
-                }
+                // Gonna Rewrite During Lunch, During Related, and While I am at Home (Leave this to me Ruchir, lmao)
             }
             times++;
-            if (times == notes.notes.Length)
-            {
-                if (currentNote.CompareTag("Note"))
-                {
-                    currentNote.tag = "Last Note";
-                }
-                else
-                {
-                    currentNote.tag = "Last HoldNote";
-                }
-            }
+            //if (times == notes.notes.Length)
+            //{
+            //    if (currentNote.CompareTag("Note"))
+            //    {
+            //        currentNote.tag = "Last Note";
+            //    }
+            //    else
+            //    {
+            //        currentNote.tag = "Last HoldNote";
+            //    }
+            //}
         }
     }
 
