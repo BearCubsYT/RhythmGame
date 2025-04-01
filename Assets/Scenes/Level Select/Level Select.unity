@@ -905,7 +905,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &756528738
 RectTransform:
   m_ObjectHideFlags: 0
@@ -923,7 +923,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -420, y: 1480}
+  m_AnchoredPosition: {x: -420, y: 2328}
   m_SizeDelta: {x: 126.7278, y: 56.1629}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &756528739
@@ -969,19 +969,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 756528740}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1882055229}
-        m_TargetAssemblyTypeName: UpdateLevelSelect, Assembly-CSharp
-        m_MethodName: DisplayStats
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 4
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &756528740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2144,16 +2132,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StatsPrefab: {fileID: 203277305}
-  ButtonPrefab: {fileID: 756528737}
+  ButtonPrefab: {fileID: 756528739}
   NoteCountText: {fileID: 621725596}
-  SongNameText: {fileID: 0}
+  SongNameText: {fileID: 101801279}
   Contant: {fileID: 647556795}
   jsonFiles:
   - {fileID: 4900000, guid: 5e6a557e6098f424a8058769dece0a2a, type: 3}
-  - {fileID: 4900000, guid: 831a927f1a4827641bb3e2f7dcc49a5c, type: 3}
-  - {fileID: 4900000, guid: 831a927f1a4827641bb3e2f7dcc49a5c, type: 3}
+  - {fileID: 4900000, guid: 3668a85a035b8164087fb7fa605d8b86, type: 3}
+  - {fileID: 4900000, guid: 3668a85a035b8164087fb7fa605d8b86, type: 3}
   - {fileID: 4900000, guid: 5e6a557e6098f424a8058769dece0a2a, type: 3}
-  - {fileID: 4900000, guid: 831a927f1a4827641bb3e2f7dcc49a5c, type: 3}
+  - {fileID: 4900000, guid: 3668a85a035b8164087fb7fa605d8b86, type: 3}
 --- !u!1 &1901710691
 GameObject:
   m_ObjectHideFlags: 0

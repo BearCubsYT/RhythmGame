@@ -3,12 +3,13 @@ using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 public class UpdateLevelSelect : MonoBehaviour
 {
     [SerializeField] private GameObject StatsPrefab;
-    [SerializeField] private GameObject ButtonPrefab;
+    [SerializeField] private UnityEngine.UI.Button ButtonPrefab;
     [SerializeField] private TextMeshProUGUI NoteCountText;
     [SerializeField] private TextMeshProUGUI SongNameText;
     [SerializeField] private CanvasRenderer Contant;
@@ -40,14 +41,14 @@ public class UpdateLevelSelect : MonoBehaviour
         foreach (TextAsset Map in jsonFiles)
         {
             MapJson MapObject = JsonUtility.FromJson<MapJson>(Map.ToString());
-            GameObject SongButton = Instantiate(ButtonPrefab, new Vector3(-420 + (col * 800), 1480 - (row * 300), 0), Quaternion.identity);
+            UnityEngine.UI.Button SongButton = Instantiate(ButtonPrefab, new Vector3(-420 + (col * 800), 1480 - (row * 300), 0), Quaternion.identity);
             
+            SongButton.onClick.AddListener(() => DisplayStats(MapObject));
 
             TextMeshProUGUI ButtonSong = SongButton.GetComponentInChildren<TextMeshProUGUI>();
             ButtonSong.text = MapObject.name;
 
             SongButton.transform.SetParent(Contant.transform, false);
-            SongButton.SetActive(true);
             
             count++;
             
@@ -68,12 +69,10 @@ public class UpdateLevelSelect : MonoBehaviour
 
     }
 
-    public void DisplayStats()
+    private void DisplayStats(MapJson MapObject)
     {
-        Debug.Log(this);
-
-        NoteCountText.text = "Note Count: " + "placeholder";
-        SongNameText.text = "Music: " + "placeholder";
+        NoteCountText.text = "Note Count: " + MapObject.units.ToString();
+        SongNameText.text = "Music: " + MapObject.name;
         StatsPrefab.SetActive(true);
     }
 
