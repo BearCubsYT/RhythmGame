@@ -42,28 +42,22 @@ public class NoteSpawner : MonoBehaviour
     void Start()
     {
         AssignCurrentFile();
-        noteSpeed = StaticData.jsonFile.units / StaticData.jsonFile.seconds;
-        gameManager.GetComponent<BeatScroller>().noteSpeed = noteSpeed;
+        noteSpeed = 1465 / 195; // StaticData.jsonFile.units / StaticData.jsonFile.seconds
+        gameManager.GetComponent<BeatScroller>().noteSpeed = 73.25f;
         SpawnNotes();
     }
 
     void AssignCurrentFile()
     {
         currentJson = JsonUtility.FromJson<StaticData.MapJson>(jsonFiles[0].ToString()); // StaticData.jsonFile;
-        //var times = 0;
-        //foreach (var song in songs)
-        //{//{
-        //    if (song.name == currentJson.name)
-        //    {
-        //        audioSource.clip = songs[times];
-        //        break;
-        //    }
-        //    times++;
-        //}
-    }
+        audioSource.clip = songs[0];
+}
 
     void SpawnNotes()
     {
+
+        Debug.Log(currentJson.notes.Length);
+
         var times = 0;
         foreach (StaticData.ANote note in currentJson.notes)
         {
@@ -126,13 +120,15 @@ public class NoteSpawner : MonoBehaviour
                 }
             }
         }
+
+        Debug.Log(blueNotes.transform.childCount + redNotes.transform.childCount + greenNotes.transform.childCount + yellowNotes.transform.childCount);
     }
 
     void TapNoteSpawner(int noteCount, GameObject prefab, StaticData.ANote note, string noteName, Transform noteTransform, List<string> noteArray, float zPos)
     {
         currentNote = Instantiate(
             prefab,
-            new Vector3(float.Parse(note.position) * noteSpeed + 5, 0.8f, zPos), 
+            new Vector3(float.Parse(note.position) * noteSpeed, 0.8f, zPos), 
             Quaternion.identity
         );
         currentNote.name = $"{noteName} ({noteCount})";
@@ -145,7 +141,7 @@ public class NoteSpawner : MonoBehaviour
     {
         currentNote = Instantiate(
             prefab, 
-            new Vector3((float.Parse(note.position) + float.Parse(note.length)) - (float.Parse(note.length) / 2) * noteSpeed + 5, 0.8f, zPos), 
+            new Vector3((float.Parse(note.position) + float.Parse(note.length)) - (float.Parse(note.length) / 2) * noteSpeed, 0.8f, zPos), 
             Quaternion.identity
         );
         currentNote.name = $"{noteName} ({noteCount})";
