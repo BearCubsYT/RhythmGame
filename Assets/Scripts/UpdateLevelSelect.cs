@@ -57,8 +57,8 @@ public class UpdateLevelSelect : MonoBehaviour
     private void DisplayStats(StaticData.MapJson MapObject)
     {
         currentMap = MapObject;
-        NoteCountText.text = "Note Count: " + MapObject.units.ToString();
-        SongNameText.text = "Music: " + MapObject.name;
+        SongNameText.text = "Song: " + MapObject.name;
+        NoteCountText.text = "Note Count: " + MapObject.notes.Length;
         StatsPrefab.SetActive(true);
     }
 
