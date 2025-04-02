@@ -89,7 +89,7 @@ public class Note : MonoBehaviour
     {
         wasPressed = true;
         notesList.Remove(note.name);
-        //anim.SetTrigger("Active");
+        anim.SetTrigger("Active");
     }
 
     // Checks if User is Pressing a Note
