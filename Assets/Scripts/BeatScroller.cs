@@ -13,7 +13,7 @@ public class BeatScroller : MonoBehaviour
     void Update()
     {
         if (gameActive) {
-
+            Debug.Log(Time.deltaTime);
             notes.transform.position -= new Vector3(noteSpeed * Time.deltaTime, 0f, 0f);
 
         }

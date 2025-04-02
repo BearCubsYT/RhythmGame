@@ -38,12 +38,13 @@ public class NoteSpawner : MonoBehaviour
     [SerializeField] private GameObject yellowNotes;
     [SerializeField] private GameObject greenNotes;
     [SerializeField] private GameObject redNotes;
+    private float initialPos = 15f;
 
     void Start()
     {
         AssignCurrentFile();
-        noteSpeed = 1465 / 195; // StaticData.jsonFile.units / StaticData.jsonFile.seconds
-        gameManager.GetComponent<BeatScroller>().noteSpeed = 73.25f;
+        noteSpeed = 1465 / 200; // StaticData.jsonFile.units / StaticData.jsonFile.seconds
+        gameManager.GetComponent<BeatScroller>().noteSpeed = noteSpeed;
         SpawnNotes();
     }
 
@@ -128,7 +129,7 @@ public class NoteSpawner : MonoBehaviour
     {
         currentNote = Instantiate(
             prefab,
-            new Vector3(float.Parse(note.position) * noteSpeed, 0.8f, zPos), 
+            new Vector3(float.Parse(note.position) + initialPos, 0.8f, zPos), 
             Quaternion.identity
         );
         currentNote.name = $"{noteName} ({noteCount})";
@@ -141,7 +142,7 @@ public class NoteSpawner : MonoBehaviour
     {
         currentNote = Instantiate(
             prefab, 
-            new Vector3((float.Parse(note.position) + float.Parse(note.length)) - (float.Parse(note.length) / 2) * noteSpeed, 0.8f, zPos), 
+            new Vector3(float.Parse(note.position) + initialPos, 0.8f, zPos), // (float.Parse(note.position) + float.Parse(note.length)) - (float.Parse(note.length) / 2) * noteSpeed
             Quaternion.identity
         );
         currentNote.name = $"{noteName} ({noteCount})";

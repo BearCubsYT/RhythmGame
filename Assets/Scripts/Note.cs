@@ -79,6 +79,7 @@ public class Note : MonoBehaviour
                 gameManager.GetComponent<Stats>().greenNotes.Remove(note.name);
                 gameManager.GetComponent<Stats>().redNotes.Remove(note.name);
             }
+            Debug.Log(note.name);
             GameOver();
             Object.Destroy(note);
         }
