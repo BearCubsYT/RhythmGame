@@ -36,12 +36,12 @@ public class NoteSpawner : MonoBehaviour
     [SerializeField] private GameObject yellowNotes;
     [SerializeField] private GameObject greenNotes;
     [SerializeField] private GameObject redNotes;
-    private float initialPos = 15f;
+    private float initialPos = 20f * 2 / 1.3f;
 
     void Start()
     {
         AssignCurrentFile();
-        noteSpeed = 1465 / 200; // StaticData.jsonFile.units / StaticData.jsonFile.seconds
+        noteSpeed = (StaticData.jsonFile.units / StaticData.jsonFile.seconds) * 2 * 1.3f;
         gameManager.GetComponent<BeatScroller>().noteSpeed = noteSpeed;
         SpawnNotes();
     }
