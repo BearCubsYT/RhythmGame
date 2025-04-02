@@ -116,7 +116,6 @@ GameObject:
   - component: {fileID: 4138767195244055858}
   - component: {fileID: 161272893680582690}
   - component: {fileID: 7261429778188431390}
-  - component: {fileID: 9197095693299417096}
   - component: {fileID: 5680013171788554662}
   m_Layer: 0
   m_Name: Yellow Hold Note Prefab
@@ -177,28 +176,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   note: {fileID: 3852522703239103216}
   gameManager: {fileID: 0}
---- !u!64 &9197095693299417096
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3852522703239103216}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2432090755550338912, guid: e5c44a747ae564d43964a659dfba0dde, type: 3}
 --- !u!95 &5680013171788554662
 Animator:
   serializedVersion: 5

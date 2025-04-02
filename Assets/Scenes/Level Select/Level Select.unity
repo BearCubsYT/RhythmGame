@@ -2137,10 +2137,7 @@ MonoBehaviour:
   SongNameText: {fileID: 1901710693}
   Contant: {fileID: 647556795}
   jsonFiles:
-  - {fileID: 4900000, guid: 65d83357ba329ba488baebe8572199bc, type: 3}
-  - {fileID: 4900000, guid: 3668a85a035b8164087fb7fa605d8b86, type: 3}
-  - {fileID: 4900000, guid: 3668a85a035b8164087fb7fa605d8b86, type: 3}
-  - {fileID: 4900000, guid: 65d83357ba329ba488baebe8572199bc, type: 3}
+  - {fileID: 4900000, guid: 967255a3c41dd2d49935daf25080b1f5, type: 3}
   - {fileID: 4900000, guid: 3668a85a035b8164087fb7fa605d8b86, type: 3}
   currentMap:
     name: 

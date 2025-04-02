@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3135422577764532720}
   - component: {fileID: 7306354527380397333}
   - component: {fileID: 7939923511229456618}
-  - component: {fileID: 6963830802939047372}
   - component: {fileID: 5328960798390890936}
   m_Layer: 0
   m_Name: Green Hold Note Prefab
@@ -72,28 +71,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   note: {fileID: 1085459545480959997}
   gameManager: {fileID: 0}
---- !u!64 &6963830802939047372
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1085459545480959997}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2432090755550338912, guid: e5c44a747ae564d43964a659dfba0dde, type: 3}
 --- !u!95 &5328960798390890936
 Animator:
   serializedVersion: 5

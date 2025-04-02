@@ -221,7 +221,6 @@ GameObject:
   - component: {fileID: 1588124129833367453}
   - component: {fileID: 228543263807459358}
   - component: {fileID: 8139008905371622822}
-  - component: {fileID: 8649953782036888989}
   - component: {fileID: 5318417036051342127}
   m_Layer: 0
   m_Name: Red Hold Note Prefab
@@ -282,28 +281,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   note: {fileID: 6624863281906966712}
   gameManager: {fileID: 0}
---- !u!64 &8649953782036888989
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6624863281906966712}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2432090755550338912, guid: e5c44a747ae564d43964a659dfba0dde, type: 3}
 --- !u!95 &5318417036051342127
 Animator:
   serializedVersion: 5

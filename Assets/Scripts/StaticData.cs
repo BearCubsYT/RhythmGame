@@ -8,14 +8,23 @@ public class StaticData : MonoBehaviour
     public class ANote
     {
         public string note;
-        public string position;
-        public string length;
+        public float position;
+        public float length;
 
-        public ANote(string note, string position, string length)
+        public ANote(string note, float position, float length)
         {
             this.note = note;
             this.position = position;
             this.length = length;
+        }
+        
+        public void MultiplyNotePosition(int Multiplier)
+        {
+            this.position *= Multiplier;
+        }
+        public void MultiplyNoteLength(int Multiplier)
+        {
+            this.length *= Multiplier;
         }
     }
 

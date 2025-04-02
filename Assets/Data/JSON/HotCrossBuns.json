@@ -1,0 +1,43 @@
+{
+  "name": "Hot Cross Buns",
+  "artist": "Misc",
+  "seconds": 200,
+  "units": 60,
+  "notes": [
+    {
+      "note": 0,
+      "position": 2,
+      "length": 3
+    },
+    {
+      "note": 1,
+      "position": 6,
+      "length": 1
+    },
+    {
+      "note": 0,
+      "position": 10,
+      "length": 3
+    },
+    {
+      "note": 1,
+      "position": 14,
+      "length": 1
+    },
+    {
+      "note": 1,
+      "position": 17,
+      "length": 7
+    },
+    {
+      "note": 0,
+      "position": 24,
+      "length": 11
+    },
+    {
+      "note": 1,
+      "position": 36,
+      "length": 1
+    }
+  ]
+}

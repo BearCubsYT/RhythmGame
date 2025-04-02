@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class NoteSpawner : MonoBehaviour
 {
@@ -50,19 +48,25 @@ public class NoteSpawner : MonoBehaviour
 
     void AssignCurrentFile()
     {
-        currentJson = JsonUtility.FromJson<StaticData.MapJson>(jsonFiles[0].ToString()); // StaticData.jsonFile;
+        currentJson = StaticData.jsonFile;
         audioSource.clip = songs[0];
 }
 
     void SpawnNotes()
     {
 
-        Debug.Log(currentJson.notes.Length);
+        //Debug.Log(currentJson.notes.Length);
 
         var times = 0;
         foreach (StaticData.ANote note in currentJson.notes)
         {
-            if (note.length == "1")
+            note.MultiplyNotePosition(2);
+            note.MultiplyNoteLength(2);
+
+            Debug.Log(note.position);
+            Debug.Log(note.length);
+
+            if (note.length == 2)
             {
                 if (note.note == "0")
                 {
@@ -122,34 +126,46 @@ public class NoteSpawner : MonoBehaviour
             }
         }
 
-        Debug.Log(blueNotes.transform.childCount + redNotes.transform.childCount + greenNotes.transform.childCount + yellowNotes.transform.childCount);
+        //Debug.Log(blueNotes.transform.childCount + redNotes.transform.childCount + greenNotes.transform.childCount + yellowNotes.transform.childCount);
     }
 
     void TapNoteSpawner(int noteCount, GameObject prefab, StaticData.ANote note, string noteName, Transform noteTransform, List<string> noteArray, float zPos)
     {
         currentNote = Instantiate(
             prefab,
-            new Vector3(float.Parse(note.position) + initialPos, 0.8f, zPos), 
+            new Vector3(note.position + initialPos, 0.8f, zPos), 
             Quaternion.identity
         );
         currentNote.name = $"{noteName} ({noteCount})";
         currentNote.transform.parent = noteTransform;
         currentNote.tag = "Note";
         noteArray.Add(currentNote.name);
+        //Debug.Log(note.length);
     }
 
     void HoldNoteSpawner(int noteCount, GameObject prefab, StaticData.ANote note, string noteName, Transform noteTransform, List<string> noteArray, float zPos)
     {
         currentNote = Instantiate(
             prefab, 
-            new Vector3(float.Parse(note.position) + initialPos, 0.8f, zPos), // (float.Parse(note.position) + float.Parse(note.length)) - (float.Parse(note.length) / 2) * noteSpeed
+            new Vector3(note.position + initialPos + note.length / 2, 0.8f, zPos), // (float.Parse(note.position) + float.Parse(note.length)) - (float.Parse(note.length) / 2) * noteSpeed
             Quaternion.identity
         );
         currentNote.name = $"{noteName} ({noteCount})";
         currentNote.transform.parent = noteTransform;
         currentNote.tag = "HoldNote";
-        currentNote.transform.localScale = new Vector3(float.Parse(note.length), 1, 1);
         noteArray.Add(currentNote.name);
+        currentNote.GetComponent<BoxCollider>().size = new Vector3(note.length, 1, 1);
+        foreach (Transform childTransform in currentNote.transform)
+        {
+            if (childTransform.name == "Base")
+            {
+                childTransform.transform.localScale = new Vector3(note.length, 0.4f, 2f);
+            }
+            else
+            {
+                childTransform.transform.localScale = new Vector3(note.length - 0.75f, 0.2f, 1.5f);
+            }
+        }
     }
 }
 
