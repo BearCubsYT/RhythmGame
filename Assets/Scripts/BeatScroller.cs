@@ -1,8 +1,9 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class BeatScroller : MonoBehaviour
 {
-    public float noteSpeed = 50f;
+    public float noteSpeed;
     [SerializeField] private GameObject notes;
 
     public bool gameActive = false;
@@ -11,12 +12,9 @@ public class BeatScroller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameActive)
-        {
+        if (gameActive) {
+
             notes.transform.position -= new Vector3(noteSpeed * Time.deltaTime, 0f, 0f);
-        }
-        else
-        {
 
         }
     }
