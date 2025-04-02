@@ -42,7 +42,7 @@ public class NoteSpawner : MonoBehaviour
     void Start()
     {
         AssignCurrentFile();
-        noteSpeed = StaticData.jsonFile.units / StaticData.jsonFile.seconds;
+        noteSpeed = 7.325f;
         gameManager.GetComponent<BeatScroller>().noteSpeed = noteSpeed;
         SpawnNotes();
     }

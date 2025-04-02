@@ -1714,6 +1714,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1295296107}
     m_Modifications:
+    - target: {fileID: -7511558181221131132, guid: 2d20f16a7cabd41a3bbc5a01baa82141, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2d20f16a7cabd41a3bbc5a01baa82141, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fbf5eb58e22a041d29c4537cfaebd46b, type: 2}
     - target: {fileID: -8679921383154817045, guid: f73a813e09b67454da7b145efc2bbd92, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5
@@ -1758,14 +1766,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: YellowNotePlayer
       objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: 2d20f16a7cabd41a3bbc5a01baa82141, type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: 2d20f16a7cabd41a3bbc5a01baa82141, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: fbf5eb58e22a041d29c4537cfaebd46b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1784,6 +1784,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1295296107}
     m_Modifications:
+    - target: {fileID: -7511558181221131132, guid: 2d20f16a7cabd41a3bbc5a01baa82141, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2d20f16a7cabd41a3bbc5a01baa82141, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 73448932d9db140afac1b159a7fe4486, type: 2}
     - target: {fileID: -8679921383154817045, guid: f22a8188286184109b4731eaa45411d7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5
@@ -1828,14 +1836,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GreenNotePlayer
       objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: 2d20f16a7cabd41a3bbc5a01baa82141, type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: 2d20f16a7cabd41a3bbc5a01baa82141, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 73448932d9db140afac1b159a7fe4486, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1951,6 +1951,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 637187617}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &642173998 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3202951157763906366, guid: 85b2ab7e8040da645a2b6b277a9a85af, type: 3}
+  m_PrefabInstance: {fileID: 4451794224442827990}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2317,10 +2322,10 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   songs: []
   gameManager: {fileID: 885608018}
-  bluePrefab: {fileID: 0}
-  yellowPrefab: {fileID: 0}
-  greenPrefab: {fileID: 0}
-  redPrefab: {fileID: 0}
+  bluePrefab: {fileID: 1779794969}
+  yellowPrefab: {fileID: 2419224000972803147}
+  greenPrefab: {fileID: 642173998}
+  redPrefab: {fileID: 2013655056}
   blueHoldPrefab: {fileID: 2000432719}
   yellowHoldPrefab: {fileID: 393616186}
   greenHoldPrefab: {fileID: 1194660586}
@@ -2372,6 +2377,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1295296107}
     m_Modifications:
+    - target: {fileID: -7511558181221131132, guid: 2d20f16a7cabd41a3bbc5a01baa82141, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2d20f16a7cabd41a3bbc5a01baa82141, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 76098686e97124fc5b30c2eaf4448060, type: 2}
     - target: {fileID: -8679921383154817045, guid: 3986351610f5644ae9e54ed9eb66f8d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5
@@ -2416,14 +2429,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlueNotePlayer
       objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: 2d20f16a7cabd41a3bbc5a01baa82141, type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: 2d20f16a7cabd41a3bbc5a01baa82141, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 76098686e97124fc5b30c2eaf4448060, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4244,6 +4249,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1179972988}
     m_Modifications:
+    - target: {fileID: -2859109400176981367, guid: ab0b5b3c4c5514f878b03cc4db530675, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 87962edfea31e478eb925437d57d4acc, type: 2}
+    - target: {fileID: -895306380916907690, guid: ab0b5b3c4c5514f878b03cc4db530675, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 085056ef59ac94a24a8d59f833afd69c, type: 2}
+    - target: {fileID: 533193074659131909, guid: ab0b5b3c4c5514f878b03cc4db530675, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5908160863352278831, guid: ab0b5b3c4c5514f878b03cc4db530675, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.75
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a5725f81734774cde860f576c4393e0c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15
@@ -4292,22 +4313,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: NotePrefab
       objectReference: {fileID: 0}
-    - target: {fileID: -2859109400176981367, guid: ab0b5b3c4c5514f878b03cc4db530675, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 87962edfea31e478eb925437d57d4acc, type: 2}
-    - target: {fileID: -895306380916907690, guid: ab0b5b3c4c5514f878b03cc4db530675, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 085056ef59ac94a24a8d59f833afd69c, type: 2}
-    - target: {fileID: 533193074659131909, guid: ab0b5b3c4c5514f878b03cc4db530675, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5908160863352278831, guid: ab0b5b3c4c5514f878b03cc4db530675, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2.75
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4325,6 +4330,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 583748606}
   m_SourcePrefab: {fileID: 100100000, guid: a5725f81734774cde860f576c4393e0c, type: 3}
+--- !u!1 &1779794969 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7232261342059360602, guid: ec0d5a872bb252d4584297071218dcad, type: 3}
+  m_PrefabInstance: {fileID: 6765802362989316778}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1790136792
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4333,6 +4343,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1179972988}
     m_Modifications:
+    - target: {fileID: -2859109400176981367, guid: ab0b5b3c4c5514f878b03cc4db530675, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 868912dacfc1b41fab0a2fd7b4281374, type: 2}
+    - target: {fileID: -895306380916907690, guid: ab0b5b3c4c5514f878b03cc4db530675, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 085056ef59ac94a24a8d59f833afd69c, type: 2}
+    - target: {fileID: 533193074659131909, guid: ab0b5b3c4c5514f878b03cc4db530675, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5908160863352278831, guid: ab0b5b3c4c5514f878b03cc4db530675, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.75
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 71dfab769532443fbb630f781786ddf5, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -4384,22 +4410,6 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 71dfab769532443fbb630f781786ddf5, type: 3}
       propertyPath: m_TagString
       value: NotePrefab
-      objectReference: {fileID: 0}
-    - target: {fileID: -2859109400176981367, guid: ab0b5b3c4c5514f878b03cc4db530675, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 868912dacfc1b41fab0a2fd7b4281374, type: 2}
-    - target: {fileID: -895306380916907690, guid: ab0b5b3c4c5514f878b03cc4db530675, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 085056ef59ac94a24a8d59f833afd69c, type: 2}
-    - target: {fileID: 533193074659131909, guid: ab0b5b3c4c5514f878b03cc4db530675, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5908160863352278831, guid: ab0b5b3c4c5514f878b03cc4db530675, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4948,6 +4958,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2432090755550338912, guid: e5c44a747ae564d43964a659dfba0dde, type: 3}
+--- !u!1 &2013655056 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1438798178271656199, guid: 100ddf3a8cb228a428f759254de7d4a9, type: 3}
+  m_PrefabInstance: {fileID: 478050132605794941}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2058139887
 GameObject:
   m_ObjectHideFlags: 0
@@ -5419,7 +5434,7 @@ PrefabInstance:
     - target: {fileID: 3723107406671360895, guid: ec0d5a872bb252d4584297071218dcad, type: 3}
       propertyPath: note
       value: 
-      objectReference: {fileID: 1179972987}
+      objectReference: {fileID: 1779794969}
     - target: {fileID: 3723107406671360895, guid: ec0d5a872bb252d4584297071218dcad, type: 3}
       propertyPath: gameManager
       value: 
