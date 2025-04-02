@@ -402,7 +402,7 @@ RectTransform:
   m_GameObject: {fileID: 203277305}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.74993, y: 0.74546, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 947360660}
@@ -416,7 +416,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -663.4999, y: -2.2723}
+  m_AnchoredPosition: {x: -672, y: -1.2503}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &213366095
@@ -1835,7 +1835,7 @@ RectTransform:
   m_GameObject: {fileID: 1642970086}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.39, y: 4.39, z: 4.39}
+  m_LocalScale: {x: 4.554625, y: 4.751539, z: 4.39}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1307772312}
@@ -1843,7 +1843,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000049114, y: -254}
+  m_AnchoredPosition: {x: -114, y: -254}
   m_SizeDelta: {x: 108.5466, y: 42.2179}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1642970088
@@ -1890,10 +1890,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1882055227}
-        m_TargetAssemblyTypeName: SceneSwitcher, Assembly-CSharp
-        m_MethodName: ButtonChecker
-        m_Mode: 3
+      - m_Target: {fileID: 1882055229}
+        m_TargetAssemblyTypeName: UpdateLevelSelect, Assembly-CSharp
+        m_MethodName: ChangeScene
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2137,11 +2137,17 @@ MonoBehaviour:
   SongNameText: {fileID: 101801279}
   Contant: {fileID: 647556795}
   jsonFiles:
-  - {fileID: 4900000, guid: 5e6a557e6098f424a8058769dece0a2a, type: 3}
+  - {fileID: 4900000, guid: 65d83357ba329ba488baebe8572199bc, type: 3}
   - {fileID: 4900000, guid: 3668a85a035b8164087fb7fa605d8b86, type: 3}
   - {fileID: 4900000, guid: 3668a85a035b8164087fb7fa605d8b86, type: 3}
-  - {fileID: 4900000, guid: 5e6a557e6098f424a8058769dece0a2a, type: 3}
+  - {fileID: 4900000, guid: 65d83357ba329ba488baebe8572199bc, type: 3}
   - {fileID: 4900000, guid: 3668a85a035b8164087fb7fa605d8b86, type: 3}
+  currentMap:
+    name: 
+    artist: 
+    seconds: 0
+    units: 0
+    notes: []
 --- !u!1 &1901710691
 GameObject:
   m_ObjectHideFlags: 0
