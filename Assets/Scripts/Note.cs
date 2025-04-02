@@ -1,117 +1,133 @@
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Note : MonoBehaviour
 {
-    [SerializeField] private bool canBePressed = false;
+    // Note Booleans
+    private bool canBePressed = false;
     public bool isFront = false;
-    [SerializeField] private GameObject trigger;
-    [SerializeField] private bool wasPressed = false;
-    [SerializeField] private GameObject gameManager;
+    private bool wasPressed = false;
     private bool alreadyRan = false;
-    private float distance = 0f;
-    private float centerOfBoard = 5.00f;
+
+    // Other Game Objects
+    [SerializeField] private GameObject trigger;
+    [SerializeField] private GameObject gameManager;
     [SerializeField] private GameObject UI;
     [SerializeField] private GameObject note;
     [SerializeField] private GameObject song;
 
+    // Game Numbers
+    private float distance = 0f;
+    private float centerOfBoard = 5.00f;
+
+    // How Much Score to Add Per Score Type
     private int perfectPlusScore = 1000;
     private int perfectScore = 800;
     private int greatScore = 600;
     private int goodScore = 500;
-
+    
+    // Animator
     Animator anim;
 
-
+    // Runs at Start of Program
     void Start()
     {
+        // Gets Animator and Animations For Current Note
         anim = gameObject.GetComponent<Animator>();
     }
 
+    // Runs When Note Collides With Another Object and Sets What it Collides With To "col"
     void OnTriggerEnter(Collider col)
     {
+        // Checks If Collision is With My Collider
         if(col.gameObject == trigger)
         {
             canBePressed = true;
         }
     }
 
+    // Checks if Game is Over
     void GameOver()
     {
+        // Checks if the Tag on Note is the "Last Note" Tag
         if (note.CompareTag("Last Note"))
         {
+            // Sets the Game Over Boolean in BeatScroller Script to True
             gameManager.GetComponent<BeatScroller>().gameOver = true;
         }
     }
 
+    // Runs When the Note Leaves the Trigger and Sets What it Exits To "col"
     void OnTriggerExit(Collider col)
     {
+        // Checks if What it Leaves is the Collider
         if (col.gameObject == trigger)
         {
             canBePressed = false;
+            // Makes Sure it Wasn't Pressed
             if (!wasPressed)
             {
-                //Debug.Log("Miss");
+                // Resets Streak and Multiplier Arrays in UI Script Attached to Game Manager
                 UI.GetComponent<UI>().streak = 0;
                 UI.GetComponent<UI>().multiplier = 0;
+                // Adds One to Missed Hits Array in Stats Script Attached to Game Manager
                 gameManager.GetComponent<Stats>().missedHits += 1;
+                // Removes Note From Its Array in Stats Script Attached to Game Manager
                 gameManager.GetComponent<Stats>().blueNotes.Remove(note.name);
                 gameManager.GetComponent<Stats>().yellowNotes.Remove(note.name);
                 gameManager.GetComponent<Stats>().greenNotes.Remove(note.name);
                 gameManager.GetComponent<Stats>().redNotes.Remove(note.name);
             }
-            else
-            {
-
-            }
             GameOver();
-            if (transform.position.z == 3.5)
-            {
-                Object.Destroy(note);
-            }
-            if (transform.position.z == 1.125)
-            {
-                Object.Destroy(note);
-            }
-            if (transform.position.z == -1.125)
-            {
-                Object.Destroy(note);
-            }
-            if (transform.position.z == -3.5)
-            {
-                Object.Destroy(note);
-            }
+            Object.Destroy(note);
         }
     }
 
+    // Reusable Method For Each Note
+    void WasPressed(List<string> notesList)
+    {
+        wasPressed = true;
+        notesList.Remove(note.name);
+        //anim.SetTrigger("Active");
+    }
+
+    // Checks if User is Pressing a Note
     void Pressing()
     {
         if (canBePressed)
         {
+            // Checks Note Specific Key is Pressed, and the Position is the Notes Specific Position. Also That it is the Front Note For Its Color.
             if (Input.GetKeyDown(KeyCode.D) && transform.position.z == 3.5 && isFront)
             {
-                wasPressed = true;
-                gameManager.GetComponent<Stats>().blueNotes.Remove(note.name);
-                anim.SetTrigger("Active");
+                // Passes In Blue Notes Array Into Was Pressed Function
+                WasPressed(gameManager.GetComponent<Stats>().blueNotes);
             }
             if (Input.GetKeyDown(KeyCode.F) && transform.position.z == 1.125 && isFront)
             {
-                wasPressed = true;
-                gameManager.GetComponent<Stats>().yellowNotes.Remove(note.name);
-                anim.SetTrigger("Active");
+                // Passes In Yellow Notes Array Into Was Pressed Function
+                WasPressed(gameManager.GetComponent<Stats>().yellowNotes);
             }
             if (Input.GetKeyDown(KeyCode.J) && transform.position.z == -1.125 && isFront)
             {
-                wasPressed = true;
-                gameManager.GetComponent<Stats>().greenNotes.Remove(note.name);
-                anim.SetTrigger("Active");
+                // Passes In Green Notes Array Into Was Pressed Function
+                WasPressed(gameManager.GetComponent<Stats>().greenNotes);
             }
             if (Input.GetKeyDown(KeyCode.K) && transform.position.z == -3.5 && isFront)
             {
-                wasPressed = true;
-                gameManager.GetComponent<Stats>().redNotes.Remove(note.name);
-                anim.SetTrigger("Active");
+                // Passes In Red Notes Array Into Was Pressed Function
+                WasPressed(gameManager.GetComponent<Stats>().redNotes);
             }
         } 
+    }
+
+    // Reusable Method For Each Note
+    void ApplyScore(int score, int count)
+    {
+        // Adds One to Streak and Multiplier Arrays in UI Script Attached to Game Manager
+        UI.GetComponent<UI>().score += score * UI.GetComponent<UI>().multiplier;
+        UI.GetComponent<UI>().streak += 1;
+        count += 1;
     }
 
     void ScoreSystem()
@@ -125,31 +141,19 @@ public class Note : MonoBehaviour
 
             if (distance <= 0.25)
             {
-                //Debug.Log("Perfect+");
-                UI.GetComponent<UI>().score += perfectPlusScore * UI.GetComponent<UI>().multiplier;
-                UI.GetComponent<UI>().streak += 1;
-                gameManager.GetComponent<Stats>().perfectPlusHits += 1;
+                ApplyScore(perfectPlusScore, gameManager.GetComponent<Stats>().perfectPlusHits);
             }
             else if (distance > 0.25 && distance <= 0.5)
             {
-                //Debug.Log("Perfect");
-                UI.GetComponent<UI>().score += perfectScore * UI.GetComponent<UI>().multiplier;
-                UI.GetComponent<UI>().streak += 1;
-                gameManager.GetComponent<Stats>().perfectHits += 1;
+                ApplyScore(perfectScore, gameManager.GetComponent<Stats>().perfectHits);
             }
             else if (distance > 0.5 && distance <= 0.75)
             {
-                //Debug.Log("Great");
-                UI.GetComponent<UI>().score += greatScore * UI.GetComponent<UI>().multiplier;
-                UI.GetComponent<UI>().streak += 1;
-                gameManager.GetComponent<Stats>().greatHits += 1;
+                ApplyScore(greatScore, gameManager.GetComponent<Stats>().greatHits);
             }
             else if (distance > 0.75)
             {
-                //Debug.Log("Good");
-                UI.GetComponent<UI>().score += goodScore * UI.GetComponent<UI>().multiplier;
-                UI.GetComponent<UI>().streak += 1;
-                gameManager.GetComponent<Stats>().goodHits += 1;
+                ApplyScore(goodScore, gameManager.GetComponent<Stats>().goodHits);
             }
         }
     }
@@ -179,13 +183,9 @@ public class Note : MonoBehaviour
         if (gameManager.GetComponent<BeatScroller>().gameActive == true)
         {
             song.SetActive(true);
-
             UI.SetActive(true);
-
             Pressing();
-
             ScoreSystem();
-
             MultiplierSystem();
         }
     }   
