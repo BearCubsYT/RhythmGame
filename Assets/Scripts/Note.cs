@@ -30,22 +30,11 @@ public class Note : MonoBehaviour
     // Animator
     Animator anim;
 
-    // Lists of Every Note
-    private List<string> blueNotes;
-    private List<string> yellowNotes;
-    private List<string> greenNotes;
-    private List<string> redNotes;
-
     // Runs at Start of Program
     void Start()
     {
         // Gets Animator and Animations For Current Note
         anim = gameObject.GetComponent<Animator>();
-        // Grabs List From Other Files and Makes Another Here
-        blueNotes = gameManager.GetComponent<Stats>().blueNotes;
-        yellowNotes = gameManager.GetComponent<Stats>().yellowNotes;
-        greenNotes = gameManager.GetComponent<Stats>().greenNotes;
-        redNotes = gameManager.GetComponent<Stats>().redNotes;
     }
 
     // Runs When Note Collides With Another Object and Sets What it Collides With To "col"
@@ -112,22 +101,22 @@ public class Note : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.D) && transform.position.z == 3.5 && isFront)
             {
                 // Passes In Blue Notes Array Into Was Pressed Function
-                WasPressed(blueNotes);
+                WasPressed(gameManager.GetComponent<Stats>().blueNotes);
             }
             if (Input.GetKeyDown(KeyCode.F) && transform.position.z == 1.125 && isFront)
             {
                 // Passes In Yellow Notes Array Into Was Pressed Function
-                WasPressed(yellowNotes);
+                WasPressed(gameManager.GetComponent<Stats>().yellowNotes);
             }
             if (Input.GetKeyDown(KeyCode.J) && transform.position.z == -1.125 && isFront)
             {
                 // Passes In Green Notes Array Into Was Pressed Function
-                WasPressed(greenNotes);
+                WasPressed(gameManager.GetComponent<Stats>().greenNotes);
             }
             if (Input.GetKeyDown(KeyCode.K) && transform.position.z == -3.5 && isFront)
             {
                 // Passes In Red Notes Array Into Was Pressed Function
-                WasPressed(redNotes);
+                WasPressed(gameManager.GetComponent<Stats>().redNotes);
             }
         } 
     }
