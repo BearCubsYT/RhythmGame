@@ -1089,6 +1089,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2432090755550338912, guid: e5c44a747ae564d43964a659dfba0dde, type: 3}
+--- !u!1 &419882298 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3202951157763906366, guid: 85b2ab7e8040da645a2b6b277a9a85af, type: 3}
+  m_PrefabInstance: {fileID: 4451794224442827990}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &444064893
 GameObject:
   m_ObjectHideFlags: 0
@@ -2045,6 +2050,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &755688689 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7232261342059360602, guid: ec0d5a872bb252d4584297071218dcad, type: 3}
+  m_PrefabInstance: {fileID: 6765802362989316778}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &808920181
 GameObject:
   m_ObjectHideFlags: 0
@@ -2318,10 +2328,10 @@ MonoBehaviour:
   songs:
   - {fileID: 8300000, guid: c57d1a6bed9dea142b82a7cfc19f2006, type: 3}
   gameManager: {fileID: 885608018}
-  bluePrefab: {fileID: 0}
-  yellowPrefab: {fileID: 0}
-  greenPrefab: {fileID: 0}
-  redPrefab: {fileID: 0}
+  bluePrefab: {fileID: 755688689}
+  yellowPrefab: {fileID: 2419224000972803147}
+  greenPrefab: {fileID: 419882298}
+  redPrefab: {fileID: 1177565859}
   blueHoldPrefab: {fileID: 2000432719}
   yellowHoldPrefab: {fileID: 393616186}
   greenHoldPrefab: {fileID: 1194660586}
@@ -3152,6 +3162,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1151004451}
   m_CullTransparentMesh: 1
+--- !u!1 &1177565859 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1438798178271656199, guid: 100ddf3a8cb228a428f759254de7d4a9, type: 3}
+  m_PrefabInstance: {fileID: 478050132605794941}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1178627087
 GameObject:
   m_ObjectHideFlags: 0
