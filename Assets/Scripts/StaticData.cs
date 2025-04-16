@@ -33,17 +33,17 @@ public class StaticData : MonoBehaviour
     {
         public string name;
         public string artist;
-        public int seconds;
-        public int units;
+        public Dictionary<string, int> units;
+        public Dictionary<string, Dictionary<string, int>> velocities;
 
         public ANote[] notes;
 
-        public MapJson(string name, string artist, int seconds, int units, ANote[] notes)
+        public MapJson(string name, string artist, Dictionary<string, int> units, Dictionary<string, Dictionary<string, int>> track_velocities, ANote[] notes)
         {
             this.name = name;
             this.artist = artist;
-            this.seconds = seconds;
             this.units = units;
+            this.velocities = track_velocities;
             this.notes = notes;
         }
     }

@@ -2139,6 +2139,7 @@ MonoBehaviour:
   jsonFiles:
   - {fileID: 4900000, guid: 967255a3c41dd2d49935daf25080b1f5, type: 3}
   - {fileID: 4900000, guid: 3668a85a035b8164087fb7fa605d8b86, type: 3}
+  - {fileID: 4900000, guid: 5706f26b4b2362f478d0f73cd5d48bf7, type: 3}
   currentMap:
     name: 
     artist: 
