@@ -41,10 +41,7 @@ public class NoteSpawner : MonoBehaviour
     void Start()
     {
         AssignCurrentFile();
-        Debug.Log(StaticData.jsonFile);
-        Debug.Log(StaticData.jsonFile.units);
-        Debug.Log(StaticData.jsonFile.velocities);
-        noteSpeed = (StaticData.jsonFile.units["0"] / StaticData.jsonFile.velocities["0"]["0"]) * 2 * 1.3f;
+        //noteSpeed = (StaticData.jsonFile.units["0"] / StaticData.jsonFile.velocities["0"]["0"]) * 2 * 1.3f;
         gameManager.GetComponent<BeatScroller>().noteSpeed = noteSpeed;
         SpawnNotes();
     }
@@ -66,8 +63,8 @@ public class NoteSpawner : MonoBehaviour
             note.MultiplyNotePosition(2);
             note.MultiplyNoteLength(2);
 
-            Debug.Log(note.position);
-            Debug.Log(note.length);
+            //Debug.Log(note.position);
+            //Debug.Log(note.length);
 
             if (note.length == 2)
             {

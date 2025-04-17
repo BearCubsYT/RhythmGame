@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class StaticData : MonoBehaviour 
@@ -29,16 +31,48 @@ public class StaticData : MonoBehaviour
     }
 
     [System.Serializable]
+    public class Units
+    {
+        public int[] keys;
+        public int[] values;
+     
+        public Dictionary<int, int> units;
+
+        public Units(int[] keys, int[] values)
+        {
+            this.keys = keys;
+            this.values = values;
+            this.units = Deserialize(this.keys, this.values);
+        }
+    }
+
+    [System.Serializable]
+    public class Velocities
+    {
+        public int[] keys;
+        public int[] values;
+
+        public Dictionary<int, int> velocities;
+
+        public Velocities(int[] keys, int[] values)
+        {
+            this.keys = keys;
+            this.values = values;
+            this.velocities = Deserialize(this.keys, this.values);
+        }
+    }
+
+    [System.Serializable]
     public class MapJson
     {
         public string name;
         public string artist;
-        public Dictionary<string, int> units;
-        public Dictionary<string, Dictionary<string, int>> velocities;
+        public Units units;
+        public Velocities velocities;
 
         public ANote[] notes;
 
-        public MapJson(string name, string artist, Dictionary<string, int> units, Dictionary<string, Dictionary<string, int>> track_velocities, ANote[] notes)
+        public MapJson(string name, string artist, Units units, Velocities track_velocities, ANote[] notes)
         {
             this.name = name;
             this.artist = artist;
@@ -46,6 +80,18 @@ public class StaticData : MonoBehaviour
             this.velocities = track_velocities;
             this.notes = notes;
         }
+    }
+
+    public static Dictionary<int, int> Deserialize(int[] keys, int[] values)
+    {
+        Dictionary<int, int> DeserializedDictionary = new();
+
+        for (int i = 0; i < keys.Length; i++)
+        {
+            DeserializedDictionary[keys[i]] = values[i];
+        }
+
+        return DeserializedDictionary;
     }
 
     public static MapJson jsonFile;
